@@ -1,0 +1,563 @@
+<!-- IDs used a22d to a232 -->
+<Objects>
+	<!-- Not yet implemented idea for lil doods, two spaceship spawners that apear in the bottom corners of the room that
+	Continue to spawn alien 1 and 2 every 10 sec through out the fight -->
+	<Object type="0xa22d" id="AD Alien 1">
+		<DisplayId>Alien Bruiser</DisplayId>
+		<Enemy/>
+		<Class>Character</Class>
+		<RemoteTexture>
+			<Instance>testing</Instance>
+			<Id>4751957415690240</Id>
+			<Right/>
+		</RemoteTexture>
+    		<!-- <File>testing draw tool</File>
+    		<Index>sues,alien</Index> -->
+  		<HitSound>monster/medusa_hit</HitSound>
+ 		<DeathSound>monster/medusa_death</DeathSound>
+ 		<Size>100</Size>
+ 		<ShadowSize>100</ShadowSize>
+ 		<MaxHitPoints>1800</MaxHitPoints>
+ 		<Defense>25</Defense>
+ 		<XpMult>0.8</XpMult>
+ 		<Projectile id="0">
+    		<ObjectId>Darkness Bolt</ObjectId>
+    		<Damage>50</Damage>
+    		<Speed>75</Speed>
+    		<LifetimeMS>550</LifetimeMS>
+  		</Projectile>
+  		<Behavior projectileId="0" numShots="1" range="6" predictive="0.5">Shoot</Behavior>
+		<Behavior bucket="movement" range="1" speed="1.6">Follow</Behavior>
+	</Object>
+	<Object type="0xa22e" id="AD Alien Mage 1">
+ 		<DisplayId>Alien Mage</DisplayId>
+ 		<Enemy/>
+  		<Class>Character</Class>
+  		<RemoteTexture>
+			<Instance>testing</Instance>
+			<Id>6316763083964416</Id>
+			<Right/>
+		</RemoteTexture>
+  		<!-- <AnimatedTexture>
+    		<File>testing draw tool</File>
+    		<Index>sues,alien</Index> 
+  		</AnimatedTexture> -->
+  		<HitSound>monster/medusa_hit</HitSound>
+ 		<DeathSound>monster/medusa_death</DeathSound>
+  		<Size>100</Size>
+  		<MaxHitPoints>1200</MaxHitPoints>
+  		<Defense>8</Defense>
+  		<Projectile id="0">
+   			<ObjectId>Purple Missile</ObjectId>
+			<Damage>60</Damage>
+    		<Speed>70</Speed>
+			<LifetimeMS>350</LifetimeMS>
+			<Amplitude>0.3</Amplitude>
+			<Frequency>0.5</Frequency>
+    		<ArcGap>13</ArcGap>
+  		</Projectile>
+  		<Behavior protecteeId="AD Boss" acquireRange="10" radius="4" speed="1">Orbit</Behavior>
+  		<Behavior projectileId="0" numShots="2" angle="25" predictive="0.1" cooldown="0.25">Shoot</Behavior>
+  	</Object>
+  	<Object type="0xa22f" id="TankSpawn">
+        <Class>Character</Class>
+        <Texture>
+        	<File>invisible</File>
+        	<Index>0</Index>
+        </Texture>
+        <NoMiniMap/>
+        <Size>0</Size>
+        <Behavior effect="Invincible">ConditionEffect</Behavior>
+        <StasisImmune/>
+       <!-- <State id="StartTanks">
+            <Behavior time=".1">Decay</Behavior>
+        </State> -->
+	</Object>
+  	<Object type="0xa230" id ="AD Boss Minnion 1">
+  		<DisplayId>Extraterrestrial Tank</DisplayId>
+ 		<Enemy/>
+ 		<Class>Character</Class>
+ 		<RemoteTexture>
+			<Instance>testing</Instance>
+			<Id>5429697718517760</Id>
+			<Right/>
+		</RemoteTexture>
+ 		<!-- <AnimatedTexture>
+    		<File>testing draw tool</File>
+    		<Index>sues,alien</Index>
+  		</AnimatedTexture>	 -->
+  		<HitSound>monster/medusa_hit</HitSound>
+ 		<DeathSound>monster/medusa_death</DeathSound>
+  		<Size>150</Size>
+  		<MaxHitPoints>25000</MaxHitPoints>
+  		<Defense>30</Defense>
+  		 <Projectile id="0">
+    		<ObjectId>Black Ball</ObjectId>
+    		<Damage>150</Damage>
+    		<Speed>75</Speed>
+    		<LifetimeMS>1500</LifetimeMS>
+  		</Projectile>
+  		<Projectile id="1">
+    		<ObjectId>Create a rocket</ObjectId>
+    		<Damage>120</Damage>
+    		<Speed>75</Speed>
+    		<LifetimeMS>1500</LifetimeMS>
+  		</Projectile>
+  		<Projectile id="2">
+  			<ObjectId>Directed Explosion</ObjectId>
+  			<Damage>150</Damage>
+       		<Size>110</Size>
+       		<Speed>55</Speed>
+        	<LifetimeMS>1600</LifetimeMS>
+        </Projectile>
+        <State id="AFK">
+			<Transition noneExist="TankSpawn">ShootEmUp</Transition>
+		</State>
+  		<State id="ShootEmUp">
+			<Behavior speed="0.4">Wander</Behavior>
+			<State id="Shot1">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="0" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot2</Transition>
+			</State>
+			<State id="Shot2">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="15" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot3</Transition>
+			</State>
+			<State id="Shot3">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="30" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot4</Transition>
+			</State>
+			<State id="Shot4">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="45" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot5</Transition>
+			</State>	
+			<State id="Shot5">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="60" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot6</Transition>				
+			</State>		
+			<State id="Shot6">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="75" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot7</Transition>				
+			</State>		
+			<State id="Shot7">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="90" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot8</Transition>				
+			</State>		
+			<State id="Shot8">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="105" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot9</Transition>				
+			</State>
+			<State id="Shot9">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="105" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot10</Transition>				
+			</State>
+			<State id="Shot10">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="90" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot11</Transition>				
+			</State>
+			<State id="Shot11">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="75" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot12</Transition>				
+			</State>
+			<State id="Shot12">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="60" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot13</Transition>				
+			</State>
+			<State id="Shot13">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="45" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot14</Transition>
+			</State>
+			<State id="Shot14">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="30" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot15</Transition>
+			</State>
+			<State id="Shot15">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="15" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot16</Transition>
+			</State>
+			<State id="Shot16">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="0" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">MissleAttack</Transition>
+			</State>
+			<Transition hitpointsLessThan="0.05">Suicide</Transition>
+			<Transition noneExist="AD Boss Minnion 2">Getsmemo</Transition>
+		</State>
+		<State id="MissleAttack">
+			<Behavior bucket="movement" aquireRange="6" range="3" speed="0.85">Follow</Behavior>
+			<Behavior range="5" numShots="3" projectileId="1" angle="35" predictive="0.5">Shoot</Behavior>
+			<Transition afterTime="5">ShootEmUp</Transition>
+			<Transition hitpointsLessThan="0.05">Suicide</Transition>
+			<Transition noneExist="AD Boss Minnion 2">GetsMemo</Transition>
+		</State>
+		<State id="Suicide">
+			<Behavior type="Flash" color="FF0000" flashPeriod="0.2" flashRepeats="10">ShowEffect</Behavior>
+			<Behavior text="I have failed you master.." prob="1.0" bubbleTime="3">Say</Behavior>
+            <Behavior projectileId="2" numShots="8" initialDelay="3" range="0" dropLoot="false" giveXP="True">Explode</Behavior>
+        </State>
+        <State id="GetsMemo">
+        	<Behavior effect="Invulnerable">ConditionEffect</Behavior>
+        	<Behavior text="...Yes sir." prob="1.0" bubbleTime="2">Say</Behavior>
+        	<Transition  afterTime="1.1">UseFlamethrower</Transition>
+        </State>
+        <State id="UseFlamethrower">
+        	<Behavior bucket="movement" range="1" speed=".5">Follow</Behavior>
+        		<State id="Shot1">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="0" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot2</Transition>
+				</State>
+				<State id="Shot2">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="15" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot3</Transition>
+				</State>
+				<State id="Shot3">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="30" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot4</Transition>
+				</State>
+				<State id="Shot4">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="45" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot5</Transition>
+				</State>	
+				<State id="Shot5">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="60" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot6</Transition>				
+				</State>		
+				<State id="Shot6">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="75" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot7</Transition>				
+				</State>		
+				<State id="Shot7">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="90" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot8</Transition>				
+				</State>		
+				<State id="Shot8">
+						<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="105" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot9</Transition>				
+				</State>
+				<State id="Shot9">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="105" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot10</Transition>				
+				</State>
+				<State id="Shot10">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="90" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot11</Transition>				
+				</State>
+				<State id="Shot11">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="75" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot12</Transition>				
+				</State>
+				<State id="Shot12">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="60" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot13</Transition>				
+				</State>
+				<State id="Shot13">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="45" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot14</Transition>
+				</State>
+				<State id="Shot14">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="30" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot15</Transition>
+				</State>
+				<State id="Shot15">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="15" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot16</Transition>
+				</State>
+				<State id="Shot16">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="0" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.1">Shot1</Transition>
+				</State>
+			<Transition hitpointsLessThan="0.05">Suicide3</Transition>
+		</State>
+		<State id="Suicide3">
+			<Behavior effect="Invulnerable">ConditionEffect</Behavior>
+			<Behavior type="Flash" color="FF0000" flashPeriod="0.2" flashRepeats="10">ShowEffect</Behavior>
+			<Behavior text="I have failed you master.." prob="1.0" bubbleTime="3">Say</Behavior>
+            <Behavior projectileId="2" numShots="8" initialDelay="3" range="0" dropLoot="True" giveXP="True">Explode</Behavior>
+        </State>
+	</Object>
+	  	<Object type="0xa231" id ="AD Boss Minnion 2">
+  		<DisplayId>Extraterrestrial Tank</DisplayId>
+ 		<Enemy/>
+ 		<Class>Character</Class>
+ 		<RemoteTexture>
+			<Instance>testing</Instance>
+			<Id>5429697718517760</Id>
+			<Left/>
+		</RemoteTexture>
+    		<!-- <File>testing draw tool</File>
+    		<Index>sues,alien</Index> -->
+  		<HitSound>monster/medusa_hit</HitSound>
+ 		<DeathSound>monster/medusa_death</DeathSound>
+  		<Size>150</Size>
+  		<MaxHitPoints>25000</MaxHitPoints>
+  		<Defense>30</Defense>
+  		 <Projectile id="0">
+    		<ObjectId>Black Ball</ObjectId>
+    		<Damage>150</Damage>
+    		<Speed>75</Speed>
+    		<LifetimeMS>1500</LifetimeMS>
+  		</Projectile>
+  		<Projectile id="1">
+    		<ObjectId>Create a rocket</ObjectId>
+    		<Damage>120</Damage>
+    		<Speed>75</Speed>
+    		<LifetimeMS>1500</LifetimeMS>
+  		</Projectile>
+  		<Projectile id="2">
+  			<ObjectId>Directed Explosion</ObjectId>
+  			<Damage>150</Damage>
+       		<Size>110</Size>
+       		<Speed>55</Speed>
+        	<LifetimeMS>1600</LifetimeMS>
+        </Projectile>
+        <State id="AFK">
+			<Transition noneExist="TankSpawn">ShootEmUp</Transition>
+		</State>
+  		<State id="ShootEmUp">
+			<Behavior speed="0.4">Wander</Behavior>
+			<State id="Shot16">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="0" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot15</Transition>
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>
+			</State>			
+			<State id="Shot2">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="15" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot1</Transition>
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>
+			</State>
+			<State id="Shot3">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="30" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot2</Transition>
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>
+			</State>
+			<State id="Shot4">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="45" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot3</Transition>
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>
+			</State>	
+			<State id="Shot5">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="60" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot4</Transition>	
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>			
+			</State>		
+			<State id="Shot6">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="75" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot5</Transition>
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>				
+			</State>		
+			<State id="Shot7">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="90" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot6</Transition>
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>				
+			</State>		
+			<State id="Shot8">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="105" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot7</Transition>	
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>			
+			</State>
+			<State id="Shot9">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="105" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot8</Transition>
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>				
+			</State>
+			<State id="Shot10">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="90" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot9</Transition>
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>				
+			</State>
+			<State id="Shot11">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="75" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot10</Transition>
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>				
+			</State>
+			<State id="Shot12">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="60" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot11</Transition>	
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>			
+			</State>
+			<State id="Shot13">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="45" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot12</Transition>
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>
+			</State>
+			<State id="Shot14">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="30" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot13</Transition>
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>
+			</State>
+			<State id="Shot15">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="15" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">Shot14</Transition>
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>
+			</State>
+			<State id="Shot1">
+					<Behavior numShots="1" projectileId="0" cooldown="0.3" type="auto" defaultAngle="0" angle="120">Shoot</Behavior>
+					<Transition afterTime="0.2">MissleAttack</Transition>
+					<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>
+			</State>
+			<Transition hitpointsLessThan="0.05">Suicide</Transition>
+		</State>
+		<State id="MissleAttack">
+			<Behavior bucket="movement" aquireRange="6" range="3" speed="0.85">Follow</Behavior>
+			<Behavior range="5" numShots="3" projectileId="1" angle="35" predictive="0.5">Shoot</Behavior>
+			<Transition afterTime="5">ShootEmUp</Transition>
+			<Transition noneExist="AD Boss Minnion 1">HeMad</Transition>
+			<Transition hitpointsLessThan="0.05">Suicide</Transition>
+		</State>
+		<State id="Suicide">
+			<Behavior type="Flash" color="FF0000" flashPeriod="0.2" flashRepeats="10">ShowEffect</Behavior>
+			<Behavior text="I have failed you master.." prob="1.0" bubbleTime=".3">Say</Behavior>
+            <Behavior projectileId="2" numShots="8" initialDelay="1" range="0" dropLoot="false" giveXP="True">Explode</Behavior>
+        </State>
+        <State id="HeMad">
+        	<Behavior effect="Invulnerable">ConditionEffect</Behavior>
+        	<Behavior text="NO!!" prob="1.0" bubbleTime="1">Say</Behavior>
+        	<Transition afterTime="1">HeKill</Transition>
+        </State>
+        <State id="HeKill">
+        	<Behavior bucket="movement" range="1" speed="2">Follow</Behavior>
+			<Behavior range="5" numShots="5" projectileId="1" angle="35" predictive="0.5" cooldown="0.2">Shoot</Behavior>
+			<Transition hitpointsLessThan="0.05">Suicide2</Transition>
+		</State>
+		<State id="Suicide2">
+			<Behavior effect="Invulnerable">ConditionEffect</Behavior>
+			<Behavior text="I WILL AVENGE YOU!" prob="1.0" bubbleTime="3">Say</Behavior>
+			<Behavior type="Flash" color="FF0000" flashPeriod="0.2" flashRepeats="15">ShowEffect</Behavior>
+        	<Behavior bucket="movement" range="1" speed="2">Follow</Behavior>
+        	<Behavior projectileId="2" numShots="8" initialDelay="3" range="0" dropLoot="True" giveXP="True">Explode</Behavior>
+        </State>	
+	</Object>
+	<Object type="0xa232" id ="AD Boss">
+		<DisplayId>Alien Boss</DisplayId>
+ 		<Enemy/>
+  		<Class>Character</Class>
+  		<RemoteTexture>
+			<Instance>testing</Instance>
+			<Id>5389726504714240</Id>
+			<Right/>
+		</RemoteTexture>
+  		<!-- <AnimatedTexture>
+    		<File>testing draw tool</File>
+    		<Index>sues,alien</Index>
+  		</AnimatedTexture> -->
+  		<HitSound>monster/medusa_hit</HitSound>
+ 		<DeathSound>monster/medusa_death</DeathSound>
+  		<Size>100</Size>
+  		<MaxHitPoints>35000</MaxHitPoints>
+  		<Defense>15</Defense>
+  		<Projectile id="0">
+			<ObjectId>Black ball</ObjectId>
+			<Damage>150</Damage>
+    		<Speed>70</Speed>
+			<LifetimeMS>350</LifetimeMS>
+			<Size>200</Size>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Black ball</ObjectId>
+			<Damage>200</Damage>
+    		<Speed>70</Speed>
+			<LifetimeMS>350</LifetimeMS>
+			<Size>150</Size>
+		</Projectile>
+		<Projectile id="2">
+  			<ObjectId>Directed Explosion</ObjectId>
+  			<Damage>300</Damage>
+       		<Size>110</Size>
+       		<Speed>55</Speed>
+        	<LifetimeMS>1600</LifetimeMS>
+        </Projectile>
+		<State id="ComeClose">			
+			<Behavior effect="Invulnerable">ConditionEffect</Behavior>
+			<Transition playerWithin="11">Greet</Transition>
+			<Transition hitpointsLessThan="0.999">Greet</Transition>	
+		</State>
+		<State id="Greet">
+			<Behavior text="Blerg zwerg..." prob="1.0" bubbleTime="3">Say</Behavior>
+			<Transition hitpointsLessThan="0.98">ouch</Transition>
+		</State>
+		<State id="Ouch">
+			<Behavior effect="Invulnerable">ConditionEffect</Behavior>
+			<Behavior text="...We DON'T come in peace! Minnions attack" prob="1.0" bubbleTime="3">Say</Behavior>
+			<Transition afterTime="3">Minions</Transition>
+		</State>
+		<State id="Minions">
+			<Behavior childIds="AD Alien 1" maxChildren="8" startWithMinions="True" cooldown="0.25">MakeMinions</Behavior>
+			<Behavior childIds="AD Alien Mage 1" maxChildren="8" startWithMinions="True" cooldown="0.25">MakeMinions</Behavior>
+			<Transition hitpointsLessThan="0.65">Ouch2</Transition>
+		</State>
+		<!-- <State id="Wait1">
+			<Transition noneExist="AD Alien 1">Wait2</Transition>
+		</State>
+		<State id="Wait2">
+			<Transition noneExist="AD Alien Mage 1">Upset</Transition>
+		</State> -->
+		<State id="Ouch2">
+			<Behavior text="Bah! Useless peons. My tanks will make short work of you." prob="1.0" bubbleTime="3">Say</Behavior>
+			<Transition afterTime="3">AwakenTanks</Transition>
+		</State>
+		<State id="AwakenTanks">
+			<Behavior effect="Invulnerable">ConditionEffect</Behavior>		
+		    <Behavior objectId="TankSpawn" radius="4">DeleteObject</Behavior>
+		    <Transition afterTime="0.1">ShootAndChill</Transition>
+		</State>
+		<State id="ShootAndChill">
+			<Behavior effect="Invulnerable">ConditionEffect</Behavior>
+			<Behavior range="5" numShots="10" projectileId="0" angle="18" predictive="0.5">Shoot</Behavior>
+			<Transition noneExist="AD Boss Minnion 1">Salty</Transition>
+			<Transition noneExist="AD Boss Minnion 2">LUL</Transition>
+		</State>
+		<State id="Salty">
+			<Behavior effect="Armored">ConditionEffect</Behavior>
+			<Behavior text="Grrr..." prob="1.0" bubbleTime="1">Say</Behavior>
+			<Transition afterTime="1">HelpLilBro</Transition>
+				<State id="HelpLilBro">
+					<Behavior protecteeId="AD Boss Minnion 2" acquireRange="10" radius="4" speed="1">Orbit</Behavior>
+					<Behavior range="5" numShots="1" projectileId="1" cooldown="0.33" predictive="0.5">Shoot</Behavior>
+					<Transition noneExist="AD Boss Minnion 2">LeRagePhaseXD</Transition>
+				</State>
+		</State>
+		<State id="LUL">
+			<Behavior effect="Invulnerable">ConditionEffect</Behavior>
+			<Behavior text="Hah! There was a reason you were #2. Destroy them #1." prob="1.0" bubbleTime="1">Say</Behavior>
+			<Transition afterTime="1">HelpBigBro</Transition>
+				<State id="HelpBigBro">
+					<Behavior bucket="movement" protecteeId="AD Boss Minnion 1"" radius="4" speed="0.6">Orbit</Behavior>
+					<Behavior targetIds="AD Boss Minnion 1" cooldown="0.33" range="10" maxTargets="1" maxHeal="10000">Heal</Behavior>
+					<Transition afterTime="1">ChillAtSpawn1</Transition>
+				</State>
+		</State>
+		<State id="ChillAtSpawn1">
+			<Behavior bucket="movement" speed="1.3" range="1" cooldown="0.2">StayCloseToSpawn</Behavior>
+			<Transition hitpointsLessThan="0.35">Ouch3</Transition>
+				<State id="Ouch3">
+					<Behavior effect="Invulnerable">ConditionEffect</Behavior>
+					<Transition noneExist="AD Boss Minnion 1">LeRagePhaseXD</Transition>
+				</State>
+			<Transition noneExist="AD Boss Minnion 1">LeRagePhaseXD</Transition>
+		</State>
+		<!-- unused for now 
+		<State id="ChillAtSpawn2">
+			<Behavior bucket="movement" speed="1.3" range="1" cooldown="0.2">StayCloseToSpawn</Behavior>
+			<Transition hitpointsLessThan="0.35">Ouch4</Transition>
+				<State id="Ouch4">
+					<Behavior effect="Invulnerable">ConditionEffect</Behavior>
+					<Transition noneExist="AD Boss Minnion 2">LeRagePhaseXD</Transition>
+				</State>
+			<Transition noneExist="AD Boss Minnion 2">LeRagePhaseXD</Transition>
+		</State>
+		 -->
+		<!--This phase isn't done, excuse me while I meme xdd -->
+		<State id="LeRagePhaseXD">
+			<Behavior text="Whoa chill, was just a prank bro! Ecks deeeeee! XD" prob="1.0" bubbleTime="1">Say</Behavior>
+			<Behavior projectileId="2" numShots="8" initialDelay="3" range="0" dropLoot="false" giveXP="True">Explode</Behavior>
+		</State>
+	</Object>
+</Objects>
+
+
+		
+
+		
+
+
+
+		
