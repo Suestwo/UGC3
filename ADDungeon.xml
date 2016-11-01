@@ -1,0 +1,54 @@
+<Dungeon id="Alien Dungeon">
+  <Width>256</Width>
+  <Height>256</Height>
+  <MainBranchLen>7</MainBranchLen>
+  <NumSubBranches>4</NumSubBranches>
+  <MinSubBranchLen>3</MinSubBranchLen>
+  <MaxSubBranchLen>5</MaxSubBranchLen>
+  <MinHallwayWidth>2</MinHallwayWidth>
+  <MaxHallwayWidth>2</MaxHallwayWidth>
+  <MinHallwayLen>10</MinHallwayLen>
+  <MaxHallwayLen>10</MaxHallwayLen>
+  <HallwayTile>White Alpha Square</HallwayTile>
+  <WallObj><Obj>Grey Wall</Obj></WallObj>
+  <Visibility>LineOfSight</Visibility>
+  <Difficulty>5</Difficulty>
+  
+	<Room id="start">
+		<Type>Rectangle</Type>
+		<MinRectLen>13</MinRectLen>
+		<MaxRectLen>13</MaxRectLen>
+		<FloorTile>White Alpha Square</FloorTile>
+		<Enemies>
+			<Enemy position="randomFocus">Portal of Cowardice</Enemy>
+		</Enemies>
+	</Room>
+	<Room id="default">
+		<Type>Rectangle</Type>
+		<MinRectLen>9</MinRectLen>
+		<MaxRectLen>9</MaxRectLen>
+		<FloorTile>White Alpha Square</FloorTile>
+		<Enemies>
+			<Enemy prob="1" minNum="1" maxNum="1" position="center">AD AlienSpawner</Enemy>
+		</Enemies>
+	</Room>
+
+	<Room id="branchEnd">
+		<Type>Rectangle</Type>
+		<MinRectLen>9</MinRectLen>
+		<MaxRectLen>9</MaxRectLen>
+		<FloorTile>White Alpha Square</FloorTile>
+		<Enemies>
+			<Enemy prob="1" minNum="1" maxNum="1" position="center">AD AlienSpawner</Enemy>
+		</Enemies>
+	</Room>
+	<Room id="end">
+		<Type>Rectangle</Type>
+		<MinRectLen>9</MinRectLen>
+		<MaxRectLen>9</MaxRectLen>
+		<FloorTile>White Alpha Square</FloorTile>
+		<Enemies>
+			<Enemy prob="1" minNum="1" maxNum="1" position="center">Guild Pet</Enemy>
+		</Enemies>
+	</Room>
+</Dungeon>	
