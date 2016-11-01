@@ -1,0 +1,17 @@
+<Objects>
+  <Object type="0x138" id="Alien Dungeon Key">
+    <Class>Equipment</Class>
+    <Item/>
+    <DisplayId>Alien Dungeon Key</DisplayId>
+    <Texture>
+      <File>lofiObj2</File>
+      <Index>0xa3</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>A key which opens the way to the Alien Dungeon.</Description>
+    <Sound>use_key</Sound>
+    <Consumable/>
+    <Soulbound/>
+    <Activate id="Alien Dungeon Portal">Create</Activate>
+  </Object>
+</Objects>
