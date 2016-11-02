@@ -549,4 +549,30 @@
         <Behavior projectileId="2" numShots="8" initialDelay="3" range="0" dropLoot="false" giveXP="True">Explode</Behavior>
       </State>
   </Object>
+    	<Object type="ID pls" id="AD big tree">
+		<Class>GameObject</Class>
+			<RandomTexture>
+				<Texture><File>ADevnviorment16x16</File><Index>0</Index></Texture>
+				<Texture><File>ADevnviorment16x16</File><Index>1</Index></Texture>
+				<Texture><File>ADevnviorment16x16</File><Index>2</Index></Texture>
+				<Texture><File>ADevnviorment16x16</File><Index>3</Index></Texture>
+			</RandomTexture>
+		<Static/>
+		<OccupySquare/>
+		<HitSound>monster/trees_hit</HitSound>
+		<DeathSound>monster/tress_death</DeathSound>
+	</Object>
+	<Object type="ID pls" id="AD Small Tree">
+		<Class>GameObject</Class>
+			<RandomTexture>
+				<Texture><File>ADEnviorment8x8</File><Index>0</Index></Texture>
+				<Texture><File>ADEnviorment8x8</File><Index>1</Index></Texture>
+				<Texture><File>ADEnviorment8x8</File><Index>2</Index></Texture>
+				<Texture><File>ADEnviorment8x8</File><Index>3</Index></Texture>
+			</RandomTexture>
+		<Static/>
+		<OccupySquare/>
+		<HitSound>monster/trees_hit</HitSound>
+		<DeathSound>monster/tress_death</DeathSound>
+	</Object>
 </Objects>
