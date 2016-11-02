@@ -1,0 +1,20 @@
+<GroundTypes>
+	<Ground type="ID pls" id="AD Purple Ground">
+		<Texture>
+			<File>ADEnviorment8x8</File>
+			<Index>4</Index>
+		</Texture>
+	</Ground>
+	<Ground type="ID pls" id="AD Orange Ground">
+		<Texture>
+			<File>ADEnviorment8x8</File>
+			<Index>5</Index>
+		</Texture>
+	</Ground>
+		<Ground type="ID pls" id="AD Blue Ground">
+		<Texture>
+			<File>ADEnviorment8x8</File>
+			<Index>6</Index>
+		</Texture>
+	</Ground>
+</GroundTypes>
